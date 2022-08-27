@@ -55,6 +55,7 @@ using ROCKSDB_NAMESPACE::BatchResult;
 using ROCKSDB_NAMESPACE::BlockBasedTableOptions;
 using ROCKSDB_NAMESPACE::BottommostLevelCompaction;
 using ROCKSDB_NAMESPACE::BytewiseComparator;
+using ROCKSDB_NAMESPACE::BytewiseComparatorWithU64Ts;
 using ROCKSDB_NAMESPACE::Cache;
 using ROCKSDB_NAMESPACE::Checkpoint;
 using ROCKSDB_NAMESPACE::ColumnFamilyDescriptor;
@@ -2764,6 +2765,10 @@ void rocksdb_options_set_comparator(
     rocksdb_options_t* opt,
     rocksdb_comparator_t* cmp) {
   opt->rep.comparator = cmp;
+}
+
+void rocksdb_options_set_comparator_with_u64_ts(rocksdb_options_t* opt) {
+  opt->rep.comparator = BytewiseComparatorWithU64Ts();
 }
 
 void rocksdb_options_set_merge_operator(

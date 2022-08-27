@@ -1066,6 +1066,8 @@ extern ROCKSDB_LIBRARY_API size_t
 rocksdb_options_get_compaction_readahead_size(rocksdb_options_t*);
 extern ROCKSDB_LIBRARY_API void rocksdb_options_set_comparator(
     rocksdb_options_t*, rocksdb_comparator_t*);
+extern ROCKSDB_LIBRARY_API void rocksdb_options_set_comparator_with_u64_ts(
+rocksdb_options_t*);
 extern ROCKSDB_LIBRARY_API void rocksdb_options_set_merge_operator(
     rocksdb_options_t*, rocksdb_mergeoperator_t*);
 extern ROCKSDB_LIBRARY_API void rocksdb_options_set_uint64add_merge_operator(
@@ -1723,6 +1725,9 @@ rocksdb_comparator_with_ts_create(
                               unsigned char a_has_ts, const char* b,
                               size_t blen, unsigned char b_has_ts),
     const char* (*name)(void*), size_t timestamp_size);
+
+extern ROCKSDB_LIBRARY_API rocksdb_comparator_t*
+rocksdb_comparator_with_u64_ts_create();
 
 /* Filter policy */
 
